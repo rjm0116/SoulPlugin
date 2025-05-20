@@ -1,0 +1,39 @@
+# IntelliJ IDEA Project Files
+.idea/
+*.iml
+*.ipr
+*.iws
+out/
+target/ # Maven/Gradle build output (target or build)
+
+# Gradle files
+.gradle/
+build/
+gradle/wrapper/gradle-wrapper.jar # wrapper 설정 파일(properties)은 보통 포함, jar는 제외 가능
+                                  # 하지만 wrapper jar도 포함하는 경우가 많음 (협업 시 동일 환경 보장)
+                                  # 제외하려면 gradle/wrapper/gradle-wrapper.jar 추가
+
+# Compiled class files
+*.class
+
+# Log files
+*.log
+logs/
+
+# Package Files #
+*.jar
+*.war
+*.ear
+*.zip
+*.tar.gz
+*.rar
+
+# Windows thumbnail cache files
+Thumbs.db
+ehthumbs.db
+ehthumbs_vista.db
+Desktop.ini
+
+# Optional: Local IDE specific files
+# .DS_Store (macOS)
+.DS_Store

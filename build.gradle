@@ -1,0 +1,77 @@
+plugins {
+    id 'java'
+}
+
+// -----------------------------------------------------------------------------
+// ★★★ 프로젝트 기본 정보 - 여러분의 프로젝트에 맞게 수정하세요 ★★★
+// -----------------------------------------------------------------------------
+group = 'me.yourname.soulplugin' // Java 패키지 경로의 루트와 일치시키는 것이 일반적입니다.
+version = '1.0.3'                 // 플러그인 버전 (plugin.yml에서 이 값을 사용할 수 있습니다)
+// rootProject.name은 보통 settings.gradle에서 설정되지만, 여기서도 참조 가능합니다.
+// 여기서는 클래스 이름과 동일하다고 가정하고 plugin.yml에서 사용합니다.
+// settings.gradle 파일이 없다면, 프로젝트 디렉토리 이름이 사용될 수 있습니다.
+// 명시적으로 클래스 이름을 사용하려면 아래 processResources에서 직접 지정합니다.
+// def mainClassName = 'SoulPlugin' // 또는 getRootProject().name
+
+// Java 컴파일러 설정
+java {
+    toolchain {
+        languageVersion = JavaLanguageVersion.of(21) // Java 21 사용
+    }
+}
+
+// 소스 파일 인코딩 (한글 주석 등을 위해 UTF-8 권장)
+tasks.withType(JavaCompile).configureEach {
+    options.encoding = 'UTF-8'
+}
+
+// -----------------------------------------------------------------------------
+// 라이브러리 다운로드 위치 (저장소)
+// -----------------------------------------------------------------------------
+repositories {
+    mavenCentral()
+    // PaperMC 저장소 (Paper API 및 Spigot API도 여기서 제공됨)
+    maven { url = 'https://repo.papermc.io/repository/maven-public/' }
+}
+
+// -----------------------------------------------------------------------------
+// ★★★ 프로젝트 의존성 (라이브러리) ★★★
+// -----------------------------------------------------------------------------
+dependencies {
+    // Paper API (Minecraft 1.21) - Spigot API 기능을 포함합니다.
+    // 'compileOnly'는 이 라이브러리가 컴파일 시에만 필요하고, 최종 JAR에는 포함되지 않음을 의미합니다.
+    // 서버 실행 시 Paper/Spigot 서버가 이 API를 제공하기 때문입니다.
+    compileOnly 'io.papermc.paper:paper-api:1.21-R0.1-SNAPSHOT'
+
+    // 테스트를 위한 의존성 (선택 사항)
+    // testImplementation platform('org.junit:junit-bom:5.10.0')
+    // testImplementation 'org.junit.jupiter:junit-jupiter'
+}
+
+// -----------------------------------------------------------------------------
+// 리소스 파일 (plugin.yml 등) 처리
+// -----------------------------------------------------------------------------
+processResources {
+    filteringCharset = 'UTF-8' // 리소스 파일 처리 시 사용할 인코딩
+
+    // plugin.yml 파일 내의 플레이스홀더를 프로젝트 속성으로 치환
+    filesMatching('plugin.yml') {
+        // 'project.version'은 이 build.gradle 상단에 정의된 version 변수를 사용합니다.
+        // 'mainClassPath'는 아래에서 정의한 group과 메인 클래스 이름을 조합합니다.
+        // 'pluginNameActual'은 플러그인 이름을 명시적으로 설정합니다.
+        expand(
+                'version': project.version,
+                'mainClassPath': "${project.group}.SoulPlugin", // ★★★ 메인 클래스 이름이 SoulPlugin이라고 가정
+                'pluginNameActual': 'SoulPlugin'               // ★★★ 플러그인 이름
+        )
+    }
+}
+
+// (선택 사항) 빌드된 JAR 파일의 이름을 plugin.yml의 name과 동일하게 하려면:
+// tasks.named('jar', Jar) { // Gradle 7.1+
+//    archiveBaseName.set('SoulPlugin') // plugin.yml의 name 값과 동일하게
+// }
+// 또는 이전 버전 Gradle:
+// jar {
+//    baseName = 'SoulPlugin'
+// }
