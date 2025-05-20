@@ -31,7 +31,7 @@ Minecraft Paper 1.21 서버용 플러그인으로, 플레이어가 게임 내 �
 
 ## 설치 방법
 
-1.  GitHub [Releases 페이지](https://github.com/YOUR_USERNAME/SoulPlugin/releases)에서 최신 버전의 `SoulPlugin-x.x.x.jar` 파일을 다운로드합니다. (아직 릴리즈가 없다면 이 부분은 빌드 방법으로 대체)
+1.  GitHub [Releases 페이지](https://github.com/rjm0116/SoulPlugin/releases/tag/minecraft)
     *   또는, 이 저장소를 클론하여 직접 빌드합니다. (아래 '빌드 방법' 참고)
 2.  다운로드한 `.jar` 파일을 사용 중인 Paper 1.21 서버의 `plugins` 폴더에 넣습니다.
 3.  서버를 실행하거나 재시작합니다. (또는 `/reload` 명령어를 사용하지만, 프로덕션 환경에서는 전체 재시작을 권장합니다.)
@@ -80,6 +80,6 @@ Minecraft Paper 1.21 서버용 플러그인으로, 플레이어가 게임 내 �
 
 ## 라이선스
 
-이 프로젝트는 [MIT 라이선스](https://opensource.org/licenses/MIT) 하에 배포됩니다. (또는 원하는 다른 라이선스)
+이 프로젝트는 [MIT 라이선스](https://opensource.org/licenses/MIT) 하에 배포됩니다.
 
 ---
