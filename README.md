@@ -54,7 +54,7 @@ Minecraft Paper 1.21 서버용 플러그인으로, 플레이어가 게임 내 �
 
 1.  이 저장소를 로컬 컴퓨터에 클론(clone)합니다:
     ```bash
-    git clone https://github.com/YOUR_USERNAME/SoulPlugin.git
+    git clone https://github.com/rjm0116/SoulPlugin.git
     cd SoulPlugin
     ```
 2.  Gradle Wrapper를 사용하여 빌드합니다 (Java 21 JDK 필요):
