@@ -240,13 +240,17 @@ public class SoulPlugin extends JavaPlugin implements Listener {
         };
     }
 
-    private int getSoulAmountByLevel(int level) {
-        if (level <= 3) return randomBetween(1,3);      // 하급 (기본값 포함)
-        if (level <= 5) return randomBetween(3, 5);      // 중급
-        if (level <= 6) return randomBetween(4, 6);      // 상급
-        if (level <= 8) return 50;      // 매우 강력 (워든 등)
-        return randomBetween(300, 500);                      // 정예 (또는 레벨 8 초과, 위더/엔더드래곤)
-    }
+   private int getSoulAmountByLevel(int level) {
+    if (level <= 3) return randomBetween(1, 3);
+    if (level <= 5) return randomBetween(3, 5);
+    if (level <= 6) return randomBetween(4, 6);
+    if (level <= 8) return 50;
+    return randomBetween(300, 500);
+}
+
+private int randomBetween(int min, int max) {
+    return min + (int)(Math.random() * (max - min + 1));
+}
 
     private int getSoulAmountForBlock(Material material) {
         return switch (material) {
