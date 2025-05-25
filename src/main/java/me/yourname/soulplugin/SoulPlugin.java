@@ -1,4 +1,4 @@
-package me.yourname.soulplugin; // ★★★ 여러분의 실제 패키지 경로로 수정하세요. (build.gradle의 group과 일치)
+package me.yourname.soulplugin; // 
 
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
@@ -236,16 +236,16 @@ public class SoulPlugin extends JavaPlugin implements Listener {
             case WARDEN -> ThreadLocalRandom.current().nextInt(7,9);
             // 정예 (레벨 300~500 랜덤, 영혼 50)
             case WITHER, ENDER_DRAGON -> ThreadLocalRandom.current().nextInt(300, 501);
-            default -> 2; // 위에 명시되지 않은 기타 몬스터는 기본 레벨 2 (영혼 10)
+            default -> 2; // 위에 명시되지 않은 기타 몬스터는 기본 레벨 2 (영혼 1~3)
         };
     }
 
     private int getSoulAmountByLevel(int level) {
-        if (level <= 3) return 10;      // 하급 (기본값 포함)
-        if (level <= 5) return 20;      // 중급
-        if (level <= 6) return 30;      // 상급
-        if (level <= 8) return 40;      // 매우 강력 (워든 등)
-        return 50;                      // 정예 (또는 레벨 8 초과, 위더/엔더드래곤)
+        if (level <= 3) return randomBetween(1,3);      // 하급 (기본값 포함)
+        if (level <= 5) return randomBetween(3, 5);      // 중급
+        if (level <= 6) return randomBetween(4, 6);      // 상급
+        if (level <= 8) return 50;      // 매우 강력 (워든 등)
+        return randomBetween(300, 500);                      // 정예 (또는 레벨 8 초과, 위더/엔더드래곤)
     }
 
     private int getSoulAmountForBlock(Material material) {
